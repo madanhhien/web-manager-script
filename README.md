@@ -19,7 +19,7 @@ Chú ý: đường dẫn `/duong/dan/den/` là **ví dụ**, thay bằng nơi b�
 1. Chọn `6`.
 2. Domain: `demo2.test` (nên dùng tên chưa tồn tại).
 3. Thư mục cha: `/srv/websites` (hoặc Enter để dùng mặc định).
-4. IP web server: dùng IP thực tế của máy (VD `192.168.152.10` **chỉ là IP của máy kiểm thử cũ**).
+4. IP web server: dùng IP thực tế của máy 
 5. Chọn `1` để xác nhận hoặc `0` để hủy.
 6. Kiểm tra `http://demo2.test/` trên Firefox của CentOS sử dụng DNS BIND nội bộ.
 
@@ -40,7 +40,3 @@ Backup v4 lấy thêm các đường dẫn website từ các VirtualHost `webman
 - Trên CentOS 7 bật SELinux, website ở thư mục tùy chọn có thể cần thêm cấu hình bối cảnh SELinux cho thư mục cha; script có gán nhãn `httpd_sys_content_t` cho thư mục website nhưng không tự sửa quyền/nhãn của toàn bộ thư mục website.
 - Không có tên miền nào được tạo công khai trên Internet; các máy truy cập cần dùng DNS BIND nội bộ.
 - CentOS 7 đã hết hỗ trợ; `yum` có thể gặp lỗi kho phần mềm trên máy mới.
-
-## Phạm vi kiểm thử
-
-Script được kiểm tra cú pháp `bash -n` và kiểm thử thử nghiệm logic đường dẫn/backup. **Chưa kiểm thử đầy đủ quy trình Apache + BIND + Firefox trên máy CentOS của bạn**; cần làm các bước demo bên trên trước khi gửi cho nhóm.
