@@ -1,13 +1,5 @@
 # WebManager v4 — Hướng dẫn nhanh (CentOS 7)
 
-Bản v4 giữ 10 chức năng của v3, thay đổi chức năng **6** để cho phép nhập **thư mục cha tùy chọn**. Script tự ghép `/ten-mien`, ví dụ:
-
-- Domain: `demo2.test`
-- Đường dẫn thư mục: `/srv/websites`
-- DocumentRoot: `/srv/websites/demo2.test`
-
-Nhấn Enter tại câu hỏi thư mục để dùng `/var/www/webmanager-sites`.
-
 ## Chạy script
 
 ```bash
