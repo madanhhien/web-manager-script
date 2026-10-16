@@ -128,7 +128,7 @@ valid_domain() {
 }
 
 # Website phai o thu muc rieng, khong duoc la symlink hay thu muc he thong.
-# Chap nhan thu muc cha tuy chon (vd /srv/websites, /home/demo/websites).
+# Chap nhan thu muc website tuy chon (vd /srv/websites, /home/demo/websites).
 # Path do script tao luon ket thuc bang /<domain>.
 valid_site_path() {
     local path="$1" domain="$2" ancestor
@@ -174,10 +174,10 @@ create_site() {
     read -r -p 'Nhap domain (vd: shop.test): ' domain
     domain="${domain,,}"
     valid_domain "$domain" || { echo 'Domain khong hop le!'; return 1; }
-    read -r -p "Nhap thu muc CHA [$SITE_BASE]: " parent
+    read -r -p "Nhap thu muc website [$SITE_BASE]: " parent
     parent=${parent:-$SITE_BASE}
     [[ "$parent" == /* && "$parent" != *$'\n'* && "$parent" != *$'\t'* ]] || {
-        echo 'Thu muc cha phai la duong dan tuyet doi!'; return 1;
+        echo 'Thu muc website  phai la duong dan tuyet doi!'; return 1;
     }
     parent=$(realpath -m -- "$parent") || return 1
     path="$parent/$domain"
@@ -189,7 +189,7 @@ create_site() {
     server_ipv4 || return 1
     echo '========== XAC NHAN =========='
     echo "Domain: $domain"
-    echo "Thu muc cha: $parent"
+    echo "Thu muc website chinh: $parent"
     echo "Thu muc website: $path"
     echo "Web Server IP: $SERVER_IP"
     echo '1. Xac nhan tao website'
@@ -289,7 +289,7 @@ delete_site() {
 }
 
 # Lay danh sach duong dan site do script quan ly tu Virtual Host.
-# Khong bao gio backup toan bo thu muc cha tuy chon.
+# Khong bao gio backup toan bo thu muc website tuy chon.
 managed_paths() {
     local f d p
     for f in "$CONF_BASE"/webmanager-*.conf; do
@@ -366,7 +366,7 @@ restore_sites() {
         esac
         for ap in "${allowed[@]}"; do
             [[ "$entry" == "$ap" || "$entry" == "$ap/"* ]] && ok=1
-            # tar co the luu cac thu muc cha cua site.
+            # tar co the luu cac thu muc website.
             [[ "$ap" == "$entry/"* ]] && ok=1
         done
         (( ok == 1 )) || { echo "Backup co tep ngoai danh sach: $entry"; return 1; }
